@@ -30,4 +30,5 @@ setup(name='collective.soupstrainer',
       entry_points={
         'console_scripts': ['soupstrainer = collective.soupstrainer:main'],
       },
+      test_suite = "collective.soupstrainer",
       )

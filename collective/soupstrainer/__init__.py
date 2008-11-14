@@ -10,8 +10,7 @@ class SoupStrainer(object):
                 (['center', 'tt', 'big', 'small', 'basefont', 'font'],
                  []),
                 ([], ['lang', 'valign', 'halign', 'border', 'frame',
-                      'rules', 'cellspacing', 'cellpadding',
-                      'bgcolor']),
+                      'rules', 'cellspacing', 'cellpadding', 'bgcolor']),
                 (['table', 'th', 'td'], ['width', 'height']),
             ]
         if style_whitelist is None:
