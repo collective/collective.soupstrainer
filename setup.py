@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.1.dev0'
+version = '2.0.dev0'
 
 setup(name='collective.soupstrainer',
       version=version,
@@ -25,7 +25,7 @@ setup(name='collective.soupstrainer',
       zip_safe=False,
       install_requires=[
         'setuptools',
-        'BeautifulSoup',
+        'beautifulsoup4',
       ],
       entry_points={
         'console_scripts': ['soupstrainer = collective.soupstrainer:main'],

@@ -1,10 +1,10 @@
-import re
-import BeautifulSoup
+import bs4
 
 
 class SoupStrainer(object):
     def __init__(self, exclusions=None, style_whitelist=None,
-                 class_blacklist=None):
+                 class_blacklist=None, parser='html.parser'):
+        self.parser = parser
         if exclusions is None:
             exclusions = [
                 (['center', 'tt', 'big', 'small', 'basefont', 'font'],
@@ -34,14 +34,13 @@ class SoupStrainer(object):
 
     def __call__(self, data):
         if isinstance(data, basestring):
-            return unicode(self.clean(BeautifulSoup.BeautifulSoup(data)))
+            return unicode(self.clean(bs4.BeautifulSoup(data, self.parser)))
         else:
             return self.clean(data)
 
     def clean(self, soup):
-        ws_splitter = re.compile('\s')
         for elem in soup.recursiveChildGenerator():
-            if not isinstance(elem, BeautifulSoup.Tag):
+            if not isinstance(elem, bs4.Tag):
                 continue
             if self.exclusions.get(elem.name, []) is None:
                 parent = elem.parent
@@ -54,17 +53,16 @@ class SoupStrainer(object):
                 attrs = attrs.union(
                     self.exclusions.get(elem.name, set()))
                 attrs = attrs.intersection(
-                    set(x[0] for x in elem.attrs))
+                    set(x for x in elem.attrs))
                 for attr in attrs:
                     del elem[attr]
-            if elem.has_key('class'):
-                classes = ws_splitter.split(elem['class'])
-                classes = (x for x in classes
+            if elem.has_attr('class'):
+                classes = (x for x in elem['class']
                            if x not in self.class_blacklist)
                 elem['class'] = u" ".join(classes)
                 if elem['class'].strip() == '':
                     del elem['class']
-            if elem.has_key('style'):
+            if elem.has_attr('style'):
                 styles = (x.split(':', 1)
                           for x in elem['style'].split(';'))
                 styles = (x for x in styles

@@ -1,6 +1,6 @@
-import unittest
 from collective.soupstrainer import SoupStrainer
-import BeautifulSoup
+import bs4
+import unittest
 
 
 class TestCase(unittest.TestCase):
@@ -8,8 +8,8 @@ class TestCase(unittest.TestCase):
         strainer = SoupStrainer()
         data = u''
         self.assertTrue(isinstance(strainer(data), unicode))
-        data = BeautifulSoup.BeautifulSoup(u'')
-        self.assertTrue(isinstance(strainer(data), BeautifulSoup.Tag))
+        data = bs4.BeautifulSoup(u'', 'html.parser')
+        self.assertTrue(isinstance(strainer(data), bs4.Tag))
 
     def test_default_exludes(self):
         strainer = SoupStrainer()
@@ -17,13 +17,13 @@ class TestCase(unittest.TestCase):
         for tag in ['center', 'tt', 'big', 'small', 'basefont', 'font']:
             testdata.append(
                 (u'<%s><img src="foo.gif" /></%s>' % (tag, tag),
-                 u'<img src="foo.gif" />')
+                 u'<img src="foo.gif"/>')
             )
         for attribute in ['lang', 'valign', 'halign', 'border', 'frame',
                           'rules', 'cellspacing', 'cellpadding', 'bgcolor']:
             testdata.append(
                 (u'<p %s="bar"><img src="foo.gif" /></p>' % attribute,
-                 u'<p><img src="foo.gif" /></p>')
+                 u'<p><img src="foo.gif"/></p>')
             )
         testdata.append(
             (u'<table width="100%" border="1" class="sortable">'
@@ -31,7 +31,7 @@ class TestCase(unittest.TestCase):
              u'<tr class="even"><td valign="bottom">Cell1</td><td height="10">Cell2</td></tr>'
              u'</table>',
              u'<table class="sortable">'
-             u'<tr height="10" class="odd"><td colspan="2">Cell</td></tr>'
+             u'<tr class="odd" height="10"><td colspan="2">Cell</td></tr>'
              u'<tr class="even"><td>Cell1</td><td>Cell2</td></tr>'
              u'</table>')
         )
