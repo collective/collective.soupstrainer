@@ -5,9 +5,9 @@ python:
 install:
     - pip install -U pip setuptools
     - pip install -U coverage coveralls zope.testrunner
-    - pip install -U -e .[test]
+    - pip install -U -e .
 script:
-    - coverage run -m zope.testrunner --test-path=collective
+    - coverage run -m zope.testrunner --test-path=collective --verbose
 after_success:
     - coveralls
 notifications:
