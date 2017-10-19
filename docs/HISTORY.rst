@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0 - Unreleased
+2.0 (2017-10-19)
 ----------------
 
 Backwards incompatible changes
