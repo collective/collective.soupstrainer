@@ -75,4 +75,4 @@ class SoupStrainer(object):
 
 
 def main():
-    print "Hallo, Welt!"
+    print("Hallo, Welt!")
