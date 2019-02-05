@@ -6,10 +6,10 @@ import unittest
 class TestCase(unittest.TestCase):
     def test_return_type(self):
         strainer = SoupStrainer()
-        data = u''
-        self.assertTrue(isinstance(strainer(data), unicode))
         data = bs4.BeautifulSoup(u'', 'html.parser')
         self.assertTrue(isinstance(strainer(data), bs4.Tag))
+        data = u''
+        self.assertTrue(isinstance(strainer(data), str))
 
     def test_default_exludes(self):
         strainer = SoupStrainer()

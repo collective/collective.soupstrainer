@@ -1,10 +1,16 @@
 Changelog
 =========
 
-2.1 (unreleased)
+3.0 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add support for Python 3
+
+Backwards incompatible changes
+++++++++++++++++++++++++++++++
+
+* In Python 2, if you call the ``SoupStrainer`` instance with a 
+  string, the result will be a string again, instead of unicode.
 
 
 2.0 (2017-10-19)

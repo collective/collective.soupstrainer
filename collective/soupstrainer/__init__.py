@@ -33,10 +33,10 @@ class SoupStrainer(object):
         self.class_blacklist = set(class_blacklist)
 
     def __call__(self, data):
-        if isinstance(data, basestring):
-            return unicode(self.clean(bs4.BeautifulSoup(data, self.parser)))
-        else:
+        if isinstance(data, bs4.BeautifulSoup):
             return self.clean(data)
+        else:
+            return str(self.clean(bs4.BeautifulSoup(data, self.parser)))
 
     def clean(self, soup):
         for elem in soup.recursiveChildGenerator():
