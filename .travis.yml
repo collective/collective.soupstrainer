@@ -15,7 +15,7 @@ matrix:
           script: flake8 --doctests . setup.py
 install:
     - pip install -U pip setuptools
-    - pip install -U coverage coveralls
+    - pip install -U coverage coveralls zope.testrunner
     - pip install -U -e .
 script:
     - coverage run -m zope.testrunner --test-path=. --verbose
