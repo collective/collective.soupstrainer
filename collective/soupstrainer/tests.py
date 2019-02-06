@@ -1,15 +1,16 @@
 from collective.soupstrainer import SoupStrainer
 import bs4
+import six
 import unittest
 
 
 class TestCase(unittest.TestCase):
     def test_return_type(self):
         strainer = SoupStrainer()
-        data = u''
-        self.assertTrue(isinstance(strainer(data), unicode))
         data = bs4.BeautifulSoup(u'', 'html.parser')
         self.assertTrue(isinstance(strainer(data), bs4.Tag))
+        data = u''
+        self.assertTrue(isinstance(strainer(data), six.text_type))
 
     def test_default_exludes(self):
         strainer = SoupStrainer()
@@ -28,7 +29,8 @@ class TestCase(unittest.TestCase):
         testdata.append(
             (u'<table width="100%" border="1" class="sortable">'
              u'<tr height="10" class="odd"><td colspan="2">Cell</td></tr>'
-             u'<tr class="even"><td valign="bottom">Cell1</td><td height="10">Cell2</td></tr>'
+             u'<tr class="even"><td valign="bottom">Cell1</td>'
+             u'<td height="10">Cell2</td></tr>'
              u'</table>',
              u'<table class="sortable">'
              u'<tr class="odd" height="10"><td colspan="2">Cell</td></tr>'
@@ -36,7 +38,8 @@ class TestCase(unittest.TestCase):
              u'</table>')
         )
         testdata.append(
-            (u'<p style="float: left; border-bottom: 1px solid black; text-align: right">Bar</p>',
+            (u'<p style="float: left; border-bottom: 1px solid black; '
+                u'text-align: right">Bar</p>',
              u'<p style="float: left; text-align: right">Bar</p>')
         )
         for data, expected in testdata:
@@ -61,6 +64,7 @@ class TestCase(unittest.TestCase):
 def test_suite():
     import sys
     return unittest.findTestCases(sys.modules[__name__])
+
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')

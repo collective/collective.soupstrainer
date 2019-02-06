@@ -32,6 +32,6 @@ parser
 
 An instance of the SoupStrainer class can be called directly with one
 argument. The argument can either be a string, in which case it will
-internally be parsed by beautifulsoup4 and the result will be unicode, or it
-can be a parsed HTML tree created by beautifulsoup4, in which case it will be
-modified in place and be returned again.
+internally be parsed by beautifulsoup4 and the result will be unicode (or 
+string in python 3), or it can be a parsed HTML tree created by beautifulsoup4,
+in which case it will be modified in place and be returned again.
