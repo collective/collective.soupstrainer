@@ -4,7 +4,7 @@ Changelog
 2.1 (unreleased)
 ----------------
 
-- Add support for Python 3
+- Add support for Python 3 and PyPy.
 
 
 2.0 (2017-10-19)
