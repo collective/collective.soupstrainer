@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1 (unreleased)
+2.1 (2019-02-06)
 ----------------
 
 - Add support for Python 3 and PyPy.
