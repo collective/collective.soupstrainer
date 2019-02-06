@@ -64,7 +64,3 @@ class TestCase(unittest.TestCase):
 def test_suite():
     import sys
     return unittest.findTestCases(sys.modules[__name__])
-
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')

@@ -74,7 +74,3 @@ class SoupStrainer(object):
                 if elem['style'].strip() == '':
                     del elem['style']
         return soup
-
-
-def main():
-    print("Hallo, Welt!")
