@@ -1,4 +1,5 @@
 import bs4
+import six
 
 
 class SoupStrainer(object):
@@ -33,10 +34,11 @@ class SoupStrainer(object):
         self.class_blacklist = set(class_blacklist)
 
     def __call__(self, data):
-        if isinstance(data, bs4.BeautifulSoup):
-            return self.clean(data)
+        if isinstance(data, six.text_type):
+            return six.text_type(
+                    self.clean(bs4.BeautifulSoup(data, self.parser)))
         else:
-            return str(self.clean(bs4.BeautifulSoup(data, self.parser)))
+            return self.clean(data)
 
     def clean(self, soup):
         for elem in soup.recursiveChildGenerator():

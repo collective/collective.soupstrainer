@@ -1,5 +1,6 @@
 from collective.soupstrainer import SoupStrainer
 import bs4
+import six
 import unittest
 
 
@@ -9,7 +10,7 @@ class TestCase(unittest.TestCase):
         data = bs4.BeautifulSoup(u'', 'html.parser')
         self.assertTrue(isinstance(strainer(data), bs4.Tag))
         data = u''
-        self.assertTrue(isinstance(strainer(data), str))
+        self.assertTrue(isinstance(strainer(data), six.text_type))
 
     def test_default_exludes(self):
         strainer = SoupStrainer()

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '3.0.dev0'
+version = '2.1.dev0'
 
 setup(
     name='collective.soupstrainer',
@@ -20,10 +20,10 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: Implementation :: PyPy',
         "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Software Development :: Libraries :: Python Modules",
@@ -43,6 +43,7 @@ setup(
     install_requires=[
       'setuptools',
       'beautifulsoup4',
+      'six',
     ],
     entry_points={
       'console_scripts': ['soupstrainer = collective.soupstrainer:main'],
