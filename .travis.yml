@@ -1,15 +1,17 @@
 language: python
+dist: focal
 python:
     - 2.7
     - 3.5
     - 3.6
-    - pypy
+    - 3.7
+    - 3.8
+    - 3.9
+    - pypy2
     - pypy3
 matrix:
     include:
-        - python: 3.7
-          dist: xenial
-        - python: 3.6
+        - python: 3.8
           name: "Flake8"
           install:  pip install -U flake8
           script: flake8 --doctests . setup.py
