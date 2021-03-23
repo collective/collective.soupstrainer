@@ -42,6 +42,10 @@ class TestCase(unittest.TestCase):
                 u'text-align: right">Bar</p>',
              u'<p style="float: left; text-align: right">Bar</p>')
         )
+        testdata.append(
+            (u'<p><big>a</big>b<big>c</big></p>',
+             u'<p>abc</p>')
+        )
         for data, expected in testdata:
             self.assertEquals(strainer(data), expected)
 

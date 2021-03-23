@@ -4,7 +4,8 @@ Changelog
 2.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Do not stop after the first replace of a tag which is to be excluded.
+  (`#8 <https://github.com/collective/collective.soupstrainer/issues/8>`_)
 
 
 2.1 (2019-02-06)
