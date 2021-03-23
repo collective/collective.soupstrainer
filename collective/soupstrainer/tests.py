@@ -43,22 +43,22 @@ class TestCase(unittest.TestCase):
              u'<p style="float: left; text-align: right">Bar</p>')
         )
         for data, expected in testdata:
-            self.assertEquals(strainer(data), expected)
+            self.assertEqual(strainer(data), expected)
 
     def test_class_blacklist(self):
         data = u'<p class="foo bar">Blubb</p>'
         strainer = SoupStrainer()
         expected = u'<p class="foo bar">Blubb</p>'
-        self.assertEquals(strainer(data), expected)
+        self.assertEqual(strainer(data), expected)
         strainer = SoupStrainer(class_blacklist=['foo'])
         expected = u'<p class="bar">Blubb</p>'
-        self.assertEquals(strainer(data), expected)
+        self.assertEqual(strainer(data), expected)
         strainer = SoupStrainer(class_blacklist=['bar'])
         expected = u'<p class="foo">Blubb</p>'
-        self.assertEquals(strainer(data), expected)
+        self.assertEqual(strainer(data), expected)
         strainer = SoupStrainer(class_blacklist=['ba'])
         expected = u'<p class="foo bar">Blubb</p>'
-        self.assertEquals(strainer(data), expected)
+        self.assertEqual(strainer(data), expected)
 
 
 def test_suite():
