@@ -4,7 +4,7 @@ Changelog
 2.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add support for Python 3.8 and 3.9.
 
 
 2.1 (2019-02-06)
