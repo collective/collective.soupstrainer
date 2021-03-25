@@ -4,6 +4,9 @@ Changelog
 2.2 (unreleased)
 ----------------
 
+- Do not stop after the first replace of a tag which is to be excluded.
+  (`#8 <https://github.com/collective/collective.soupstrainer/issues/8>`_)
+
 - Add support for Python 3.8 and 3.9.
 
 

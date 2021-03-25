@@ -36,7 +36,7 @@ class SoupStrainer(object):
     def __call__(self, data):
         if isinstance(data, six.text_type):
             return six.text_type(
-                    self.clean(bs4.BeautifulSoup(data, self.parser)))
+                self.clean(bs4.BeautifulSoup(data, self.parser)))
         else:
             return self.clean(data)
 
@@ -45,11 +45,13 @@ class SoupStrainer(object):
             if not isinstance(elem, bs4.Tag):
                 continue
             if self.exclusions.get(elem.name, []) is None:
+                next_element = elem.next_element
                 parent = elem.parent
                 index = parent.contents.index(elem)
                 elem.extract()
                 for child in reversed(elem.contents):
                     parent.insert(index, child)
+                elem.next_element = next_element
             else:
                 attrs = self.exclusions.get(None, set())
                 attrs = attrs.union(
