@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2 (unreleased)
+2.2 (2021-03-25)
 ----------------
 
 - Do not stop after the first replace of a tag which is to be excluded.
